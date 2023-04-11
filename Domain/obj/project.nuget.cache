@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "2mN8FTVNfdn8OmY4H4Sbfkj0T8Z+NlBH7tB2phAGBF6vKT7ASl4C1kWQJwzWELLyLNHjK4KEbPswDckjOElpAw==",
+  "dgSpecHash": "wm5WwpyyFTB8PSQuaT8xpW82I2VzZ/8W9hRr0PFqFii0kG92z1PoY8cU1psJOyc9y7AkAUb3fjO2hx8SxtmK+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\krist\\RiderProjects\\RedditApp\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.4\\microsoft.aspnetcore.authorization.7.0.4.nupkg.sha512",
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.4\\microsoft.aspnetcore.metadata.7.0.4.nupkg.sha512",
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
+    "C:\\Users\\krist\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

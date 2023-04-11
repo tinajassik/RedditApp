@@ -1,0 +1,65 @@
+﻿@page "/CreatePost"
+@using HttpClients.ClientInterfaces
+@using Domain.DTOs
+@inject IPostService postService;
+@attribute [Authorize]
+
+<div class="card">
+    <h3>Create Post</h3>
+    <div class="form-group field">
+        
+        <MudTextField   @bind-Value="username" Label="Username" Variant="Variant.Filled" Margin="Margin.Dense"> @username</MudTextField>
+        <MudTextField   @bind-Value="title" Label="Title" Variant="Variant.Filled" Margin="Margin.Dense"></MudTextField>
+        <input type ="text" id="contentfield" @bind="content" >
+        @if (!string.IsNullOrEmpty(resultMsg))
+        {
+            <label style="color: @color">@resultMsg</label>
+        }
+
+    </div>
+    <div class="button-row">
+        
+       <MudButton class="acceptbtn" @onclick="Create" Variant="Variant.Filled" Disabled="@(string.IsNullOrEmpty(username)  || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content))">Create</MudButton>
+    </div>
+</div>
+
+
+
+
+@code {
+
+    public string title;
+    public string content;
+    public string username;
+
+    private string resultMsg = "";
+    private string color = "";
+
+    private async Task Create()
+    {
+        resultMsg = "";
+        CreatePostDto dto = new CreatePostDto()
+        {
+            Title = title,
+            Content = content,
+            Owner = username
+        }; 
+
+        try
+        {
+            await postService.CreateAsync(dto);
+            username = "";
+            title = "";
+            content = "";
+            resultMsg = "Post Successfully Created :)))";
+            color = "green";
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            resultMsg = e.Message;
+            color = "red";
+        }
+    }
+
+}

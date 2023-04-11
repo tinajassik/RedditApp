@@ -1,0 +1,110 @@
+﻿@page "/ViewPosts"
+@using Domain.Models
+@using MudBlazor
+@using BlazorApp.Components 
+@using HttpClients.ClientInterfaces
+@inject IPostService postService
+
+
+
+@if (!string.IsNullOrEmpty(msg))
+{
+    <div>
+        <span>@msg</span>
+    </div>
+}
+@if (posts == null)
+{
+    <div>
+        <span>Loading...</span>
+    </div>
+}
+else if (!posts.Any()) {
+    <span>I am sorry, there are no posts yet. :(</span>
+}
+else
+{
+    <MudStack>
+    
+        @foreach (Post p in posts)
+        {
+            <MudCard Outlined="true" Style="background-color:#ffdab9">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6" Style="font-style: italic">@p.Title</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <button class="button-30" @onclick="() =>  OpenPost(p.Id)"> Read Post</button>
+                </MudCardContent>
+            </MudCard>
+        }
+
+    </MudStack>
+    
+    <Modal ShowModal="showModal">
+        <MudCard Outlined="true" Style="background-color:#ffdab9">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.h6" Style="font-style: italic">@title</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+            <MudCardContent>
+                <MudText Typo= "Typo.body1"> @content </MudText>
+                <MudText Typo="Typo.body2">Written by: @owner</MudText>
+            </MudCardContent>
+            <MudButton @onclick="@(() => showModal = false)"> Close </MudButton>
+        
+            </MudCard>
+        
+</Modal>
+    
+   
+    
+    
+}
+
+
+@code {
+
+    public IEnumerable<Post>? posts; 
+    public string msg = "";
+    public bool showModal;
+    public int postId;
+    public string content;
+    public string owner;
+    public string title;
+
+    public async void OpenPost(int id)
+    {
+        Console.WriteLine("OpenPost() method called with postId: " + postId);
+        
+        Post current = await postService.GetByIdAsync(id);
+        content = current.Content;
+        title = current.Title;
+        owner = current.Owner.Username; 
+        postId = id; 
+        showModal = true;
+        Console.WriteLine("showModal value set to: " + showModal);
+    }
+
+    public async Task<Post> GetPost()
+    {
+        return await postService.GetByIdAsync(postId); 
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            posts = await postService.GetAsync();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+
+}

@@ -1,0 +1,81 @@
+﻿@page "/CreateUser"
+@using HttpClients.ClientInterfaces
+@using Domain.Models
+@using MudBlazor
+@inject IUserService userService;
+
+
+
+<div class="card">
+    <h3>Create User</h3>
+    <div class="form-group field">
+        
+        <MudTextField   @bind-Value="username" Label="Username" Variant="Variant.Filled" Margin="Margin.Dense"></MudTextField>
+        <MudTextField  @bind-Value="password" Label="Password"  Variant="Variant.Filled" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password" />
+        <MudTextField   @bind-Value="firstName" Label="First Name" Variant="Variant.Filled" Margin="Margin.Dense"></MudTextField>
+        <MudTextField   @bind-Value="lastName" Label="Last Name" Variant="Variant.Filled" Margin="Margin.Dense"></MudTextField>
+        @if (!string.IsNullOrEmpty(resultMsg))
+        {
+            <label style="color: @color">@resultMsg</label>
+        }
+
+    </div>
+    <div class="button-row">
+        
+       <MudButton class="acceptbtn" @onclick="Create" Variant="Variant.Filled" Disabled="@(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))">Create</MudButton>
+    </div>
+</div>
+
+@code {
+    public string username { get; set; } = "";
+    public string password { get; set; }= "";
+    public string firstName { get; set; }= "";
+    public string lastName { get; set; }= "";
+    private string resultMsg = "";
+    private string color = "";
+   
+    
+    private async Task Create()
+    {
+        resultMsg = "";
+
+        try
+        {
+            await userService.CreateAsync(new User(username,password,firstName,lastName));
+            username = "";
+            password = "";
+            firstName = "";
+            lastName = "";
+            resultMsg = "User successfully created";
+            color = "green";
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            resultMsg = e.Message;
+            color = "red";
+        }
+    }
+    
+    
+    // tane from MudBlazor 
+    
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    void ButtonTestclick()
+    {
+        @if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+}

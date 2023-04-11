@@ -1,0 +1,27 @@
+﻿@using HttpClients.ClientInterfaces
+@namespace BlazorApp.Components
+@inject IUserService UserService
+@inject NavigationManager navMgr
+
+
+<AuthorizeView>
+    <Authorized>
+        <img class="icon" src="icons/Logout.png" @onclick="Logout" alt="log in icon"/>
+    </Authorized>
+    <NotAuthorized>
+        <img class="icon" src="icons/Login.png" @onclick="Login" alt="log out icon"/>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private void Login()
+    {
+        navMgr.NavigateTo("/Login");
+    }
+
+    private async Task Logout()
+    {
+        await UserService.LogoutAsync();
+        navMgr.NavigateTo("/");
+    }
+}

@@ -1,0 +1,49 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 250px;
+    padding: 25px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+.field {
+    margin-top: 20px;
+}
+
+.acceptbtn {
+    background-color:lightgreen;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.acceptbtn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px 2px #3f3f3f;
+}
+
+.button-row{
+    margin-top: 15px;
+}
+
+#contentfield {
+    height: 200px; 
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: vertical; 
+}
+
+.loginbtn {
+    background-color:lightgreen;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+

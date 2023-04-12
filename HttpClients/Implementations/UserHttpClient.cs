@@ -11,7 +11,7 @@ namespace HttpClients.Implementations;
 public class UserHttpClient : IUserService
 {
     private readonly HttpClient client;
-    public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; } = null!;
+    public Action<ClaimsPrincipal>  OnAuthStateChanged { get; set; } = null!;
     public static string? Jwt { get; private set; } = "";
 
     

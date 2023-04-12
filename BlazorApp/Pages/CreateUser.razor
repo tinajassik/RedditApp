@@ -22,7 +22,7 @@
     </div>
     <div class="button-row">
         
-       <MudButton class="acceptbtn" @onclick="Create" Variant="Variant.Filled" Disabled="@(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))">Create</MudButton>
+       <MudButton  @onclick="Create"  disabled="@(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))">Create</MudButton>
     </div>
 </div>
 
@@ -58,7 +58,7 @@
     }
     
     
-    // tane from MudBlazor 
+    // taken from MudBlazor 
     
     bool isShow;
     InputType PasswordInput = InputType.Password;

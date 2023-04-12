@@ -87,11 +87,7 @@ else
         showModal = true;
         Console.WriteLine("showModal value set to: " + showModal);
     }
-
-    public async Task<Post> GetPost()
-    {
-        return await postService.GetByIdAsync(postId); 
-    }
+    
 
     protected override async Task OnInitializedAsync()
     {

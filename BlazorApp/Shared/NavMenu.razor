@@ -43,6 +43,8 @@
 @* } *@
 
 @using MudBlazor
+@using HttpClients.ClientInterfaces
+@inject IUserService UserService
 <MudNavMenu>
     
     <MudCardHeader>
@@ -53,9 +55,5 @@
     </MudCardHeader>
     <MudNavLink Href="CreateUser" Match="NavLinkMatch.Prefix">Create User</MudNavLink>
     <MudNavLink Href="CreatePost" Match="NavLinkMatch.Prefix">Add a new post!</MudNavLink>
-    @* <MudNavGroup Title="View" Expanded="true"> *@
-    @*     <MudNavLink Href="ViewUsers" Match="NavLinkMatch.Prefix">View All Users</MudNavLink> *@
-    @*     <MudNavLink Href="ViewTodos" Match="NavLinkMatch.Prefix">View All Todos</MudNavLink> *@
-    @* *@
-    @* </MudNavGroup> *@
+   
 </MudNavMenu>

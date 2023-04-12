@@ -19,7 +19,7 @@
     </div>
     <div class="button-row">
         
-       <MudButton class="acceptbtn" @onclick="Create" Variant="Variant.Filled" Disabled="@(string.IsNullOrEmpty(username)  || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content))">Create</MudButton>
+       <MudButton  @onclick="Create"  disabled="@(string.IsNullOrEmpty(username)  || string.IsNullOrEmpty(title) || string.IsNullOrEmpty(content))">Create</MudButton>
     </div>
 </div>
 
@@ -28,9 +28,10 @@
 
 @code {
 
+    public string username; 
     public string title;
     public string content;
-    public string username;
+    
 
     private string resultMsg = "";
     private string color = "";

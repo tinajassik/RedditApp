@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/krist/RiderProjects/RedditApp/BlazorApp/Pages/LogIn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nSW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/krist/RiderProjects/RedditApp/BlazorApp/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,10 +51,6 @@ build_metadata.AdditionalFiles.CssScope = b-lojxqk0f7a
 [C:/Users/krist/RiderProjects/RedditApp/BlazorApp/Components/Modal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-yqn6smq20g
-
-[C:/Users/krist/RiderProjects/RedditApp/BlazorApp/Pages/LogIn.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nSW4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-c956fem5qt
 
 [C:/Users/krist/RiderProjects/RedditApp/BlazorApp/Pages/ViewPosts.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld1Bvc3RzLnJhem9y

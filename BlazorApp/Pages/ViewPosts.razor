@@ -35,7 +35,7 @@ else
                     </CardHeaderContent>
                 </MudCardHeader>
                 <MudCardContent>
-                    <button class="button-30" @onclick="() =>  OpenPost(p.Id)"> Read Post</button>
+                    <button class="button-30" @onclick=" async () => {  await OpenPost(p.Id); showModal = true; }"> Read Post</button>
                 </MudCardContent>
             </MudCard>
         }
@@ -70,22 +70,18 @@ else
     public IEnumerable<Post>? posts; 
     public string msg = "";
     public bool showModal;
-    public int postId;
+   
     public string content;
     public string owner;
     public string title;
 
-    public async void OpenPost(int id)
+    public async Task<Post> OpenPost(int id)
     {
-        Console.WriteLine("OpenPost() method called with postId: " + postId);
-        
         Post current = await postService.GetByIdAsync(id);
         content = current.Content;
         title = current.Title;
-        owner = current.Owner.Username; 
-        postId = id; 
-        showModal = true;
-        Console.WriteLine("showModal value set to: " + showModal);
+        owner = current.Owner.Username;
+        return current;
     }
     
 

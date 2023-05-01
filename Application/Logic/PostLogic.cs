@@ -28,12 +28,8 @@ public class PostLogic : IPostLogic
 
         ValidateData(dto);
 
-        Post toCreate = new Post()
-        {
-            Owner = existing,
-            Title = dto.Title,
-            Content = dto.Content
-        };
+        Post toCreate = new Post(existing, dto.Title);
+        toCreate.Content = dto.Content;
 
         Post newPost = await postDao.CreateAsync(toCreate);
         return newPost;

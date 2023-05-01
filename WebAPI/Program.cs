@@ -1,7 +1,7 @@
 using System.Text;
 using Domain.Auth;
-using FileData;
-using FileData.DAOs;
+using EfcDataAccess;
+using EfcDataAccess.DAOs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using RedditApp.DaoInterfaces;
@@ -17,10 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<FileContext>();
-builder.Services.AddScoped<IUserDao, UserDao>();
-builder.Services.AddScoped<IPostDao, PostDao>();
+builder.Services.AddScoped<IUserDao, UserEfcDao>();
+builder.Services.AddScoped<IPostDao, PostEfcDao>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
-builder.Services.AddScoped<IPostLogic, PostLogic>(); 
+builder.Services.AddScoped<IPostLogic, PostLogic>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

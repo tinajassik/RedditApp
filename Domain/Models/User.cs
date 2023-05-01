@@ -1,7 +1,11 @@
-﻿namespace Domain.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.Models;
 
 public class User
 {
+    [Key]
+    [MaxLength(16), MinLength(3)]
     public string Username { get; set; }
     public string Password { get; set; }
     public string? FirstName { get; set; }
